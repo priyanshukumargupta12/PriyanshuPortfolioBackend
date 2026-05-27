@@ -76,11 +76,16 @@ app.use(notFound);
 app.use(errorHandler);
 
 // ─── Start Server ─────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n🚀 Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-  console.log(`📡 API: http://localhost:${PORT}/api`);
-  console.log(`❤️  Health: http://localhost:${PORT}/api/health\n`);
-});
+// app.listen(PORT, () => {
+//   console.log(`\n🚀 Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+//   console.log(`📡 API: http://localhost:${PORT}/api`);
+//   console.log(`❤️  Health: http://localhost:${PORT}/api/health\n`);
+// });
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
 
 export default app;
 
