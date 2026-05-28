@@ -50,6 +50,16 @@ if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 
+// ─── Welcome Route ────────────────────────────────────────────────────────────
+app.get("/", (_req, res) => {
+  res.json({
+    success: true,
+    message: "Welcome to Priyanshu Kumar's Portfolio Backend API 🚀",
+    healthCheck: "/api/health",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // ─── Health Check ─────────────────────────────────────────────────────────────
 app.get("/api/health", (_req, res) => {
   res.json({
